@@ -87,7 +87,11 @@ namespace AwsLambdaDeploy
             proc.WaitForExit();
             if (proc.ExitCode != 0)
             {
-                throw new Exception("Build failed with exit code: " + proc.ExitCode);
+                throw new Exception($"dotnet lambda package failed with exit code {proc.ExitCode}." +
+                                    $" Ensure the line below is added to the .csproj file of the entry point project you are deploying:{Environment.NewLine}" +
+                                    $"    <ItemGroup>{Environment.NewLine}" +
+                                    $"        <DotNetCliToolReference Include=\"Amazon.Lambda.Tools\" Version=\"1.8.0\" />{Environment.NewLine}" +
+                                    $"    </ItemGroup>");
             }
 
             var pn = projectFileName.Split('.');
