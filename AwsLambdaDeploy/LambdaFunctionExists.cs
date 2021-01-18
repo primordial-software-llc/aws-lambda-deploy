@@ -11,9 +11,14 @@ namespace AwsLambdaDeploy
                 client.GetFunctionAsync(functionName).Wait();
                 return true;
             }
-            catch (Amazon.Lambda.Model.ResourceNotFoundException)
+            catch (System.AggregateException aggregateException)
             {
-                return false;
+                if (aggregateException.InnerException != null &&
+                    aggregateException.InnerException.GetType() == typeof(Amazon.Lambda.Model.ResourceNotFoundException))
+                {
+                    return false;
+                }
+                throw;
             }
         }
     }

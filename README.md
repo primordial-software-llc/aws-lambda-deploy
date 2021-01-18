@@ -1,6 +1,6 @@
 # Aws Lambda Deploy
 
-Infrastructure as code project to create lambda functions, schedules and assign permissions. **Functions will be deleted if they already exist.**
+Infrastructure as code project to create lambda functions, schedules and assign permissions.
 
  - Deploy multiple instances of a function
  - Deploy function to multiple regions
@@ -21,6 +21,6 @@ Infrastructure as code project to create lambda functions, schedules and assign 
 
 ## Deploy
 
-    \projects\aws-lambda-deploy\AwsLambdaDeploy\bin\release>nuget push AwsLambdaDeploy.1.0.0.nupkg -src https://nuget.org/
+    \projects\aws-lambda-deploy\AwsLambdaDeploy\bin\release>nuget push AwsLambdaDeploy.1.0.5.nupkg -src https://nuget.org/
 
 *`pack` isn't required, because a nuget package is created on build*
